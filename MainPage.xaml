@@ -1,14 +1,48 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
-    x:Class="AppNumeroDaSorte.MainPage"
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    Title="MainPage">
-    <VerticalStackLayout>
-        <Label
-            Margin="20"
-            HorizontalOptions="Center"
-            Text="Bem vindo ao MAUI!"
-            VerticalOptions="Center" />
-    </VerticalStackLayout>
+<ContentPage x:Class="AppNumeroDaSorte.MainPage"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             >
+    <ScrollView HorizontalOptions="Center">
+        <VerticalStackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+            <Image
+                x:Name="logoImage"
+                HeightRequest="115"
+                Source="logo_green.png"
+                WidthRequest="74" />
+            <Label
+                x:Name="NameApp"
+                Margin="0,20,0,120"
+                HorizontalOptions="Center"
+                Text="Número da Sorte"
+                TextColor="{StaticResource PrimaryGreen}"
+                VerticalOptions="Center" />
+
+            <VerticalStackLayout x:Name="ContainerLuckNumbers" IsVisible="false">
+                <Label Text="O Número da sorte é:" HorizontalOptions="Center" Margin="0, 20, 0, 0"/>
+                <HorizontalStackLayout Spacing="10" HorizontalOptions="Center" Margin="0, 70">
+                    <Border Stroke="{StaticResource PrimaryGreen}" Padding="10, 7" StrokeShape="RoundRectangle 8">
+                        <Label x:Name="LuckNumber01" FontSize="24" Text="00" TextColor="{StaticResource PrimaryGreen}" />
+                    </Border>
+                    <Border Stroke="{StaticResource PrimaryGreen}" Padding="10, 7" StrokeShape="RoundRectangle 8">
+                        <Label x:Name="LuckNumber02" FontSize="24" Text="00" TextColor="{StaticResource PrimaryGreen}" />
+                    </Border>
+                    <Border Stroke="{StaticResource PrimaryGreen}" Padding="10, 7" StrokeShape="RoundRectangle 8">
+                        <Label x:Name="LuckNumber03" FontSize="24" Text="00" TextColor="{StaticResource PrimaryGreen}" />
+                    </Border>
+                    <Border Stroke="{StaticResource PrimaryGreen}" Padding="10, 7" StrokeShape="RoundRectangle 8">
+                        <Label x:Name="LuckNumber04" FontSize="24" Text="00" TextColor="{StaticResource PrimaryGreen}" />
+                    </Border>
+                    <Border Stroke="{StaticResource PrimaryGreen}" Padding="10, 7" StrokeShape="RoundRectangle 8">
+                        <Label x:Name="LuckNumber05" FontSize="24" Text="00" TextColor="{StaticResource PrimaryGreen}" />
+                    </Border>
+                    <Border Stroke="{StaticResource PrimaryGreen}" Padding="10, 7" StrokeShape="RoundRectangle 8">
+                        <Label x:Name="LuckNumber06" FontSize="24" Text="00" TextColor="{StaticResource PrimaryGreen}" />
+                    </Border>
+                </HorizontalStackLayout>
+                <Label Text="Boa sorte!" HorizontalOptions="Center" Margin="0, 0, 0, 50"/>
+            </VerticalStackLayout>
+            <Button x:Name="btSort" Clicked="Button_Clicked" HorizontalOptions="Center" Text="Gerar número da sorte"/>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
