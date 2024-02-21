@@ -9,10 +9,12 @@ public partial class MainPage : ContentPage
 
 	private async void OnGenerateLuckNumbers()
 	{
-		btSort.IsVisible = false;
+		btSort.IsEnabled = false;
         NameApp.IsVisible = false;
 		ContainerLuckNumbers.IsVisible = true;
 		var listNumbers = getRandomListNumbers();
+
+		_ = logoImage.ScaleTo(logoImage.Scale * 1.50, 1500, Easing.BounceIn);
 
 		LuckNumber01.Text = $"{listNumbers.ElementAt(0):D2}";
         await LuckNumber01.RotateTo(LuckNumber01.Rotation + 360, 500, Easing.BounceOut);
@@ -23,6 +25,7 @@ public partial class MainPage : ContentPage
 		LuckNumber03.Text = $"{listNumbers.ElementAt(2):D2}";
         await LuckNumber03.RotateTo(LuckNumber03.Rotation + 360, 500, Easing.BounceOut);
 
+        _ = logoImage.ScaleTo(logoImage.Scale / 1.50, 1500, Easing.BounceOut);
         LuckNumber04.Text = $"{listNumbers.ElementAt(3):D2}";
         await LuckNumber04.RotateTo(LuckNumber04.Rotation + 360, 500, Easing.BounceOut);
 
@@ -31,7 +34,7 @@ public partial class MainPage : ContentPage
 
 		LuckNumber06.Text = $"{listNumbers.ElementAt(5):D2}";
         await LuckNumber06.RotateTo(LuckNumber06.Rotation + 360, 500, Easing.BounceOut);
-        btSort.IsVisible = true;
+        btSort.IsEnabled = true;
     }
 
 	private SortedSet<int> getRandomListNumbers()
