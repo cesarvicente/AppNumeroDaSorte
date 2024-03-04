@@ -20,7 +20,7 @@
 
             <VerticalStackLayout x:Name="ContainerLuckNumbers" IsVisible="false">
                 <Label Text="O Número da sorte é:" HorizontalOptions="Center" Margin="0, 20, 0, 0"/>
-                <HorizontalStackLayout Spacing="10" HorizontalOptions="Center" Margin="0, 70">
+                <HorizontalStackLayout Spacing="10" HorizontalOptions="Center" Margin="0, 70, 0, 20">
                     <Border Stroke="{StaticResource PrimaryGreen}" Padding="10, 7" StrokeShape="RoundRectangle 8">
                         <Label x:Name="LuckNumber01" FontSize="24" Text="00" TextColor="{StaticResource PrimaryGreen}" />
                     </Border>
@@ -40,7 +40,12 @@
                         <Label x:Name="LuckNumber06" FontSize="24" Text="00" TextColor="{StaticResource PrimaryGreen}" />
                     </Border>
                 </HorizontalStackLayout>
-                <Label Text="Boa sorte!" HorizontalOptions="Center" Margin="0, 0, 0, 50"/>
+                <HorizontalStackLayout HorizontalOptions="Center">
+                    <Button x:Name="btCopy" Clicked="btCopy_Clicked" HorizontalOptions="Center" Text="Copiar" Padding="20,5" MinimumHeightRequest="0" Margin="0,0,10,50" CornerRadius="10" BackgroundColor="#005500"/>
+                    <Button x:Name="btShare" Clicked="btShare_Clicked" HorizontalOptions="Center" Text="Compartilhar" Padding="20,5" MinimumHeightRequest="0" Margin="0,0,0,50" CornerRadius="10" BackgroundColor="#005500"/>
+                    
+                </HorizontalStackLayout>
+                <Label Text="Boa sorte!" HorizontalOptions="Center" Margin="0, 0, 0, 10"/>
             </VerticalStackLayout>
             <Button x:Name="btSort" Clicked="Button_Clicked" HorizontalOptions="Center" Text="Gerar número da sorte"/>
         </VerticalStackLayout>

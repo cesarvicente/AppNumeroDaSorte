@@ -1,3 +1,5 @@
+using System.Threading.Tasks;
+
 namespace AppNumeroDaSorte;
 
 public partial class MainPage : ContentPage
@@ -14,7 +16,7 @@ public partial class MainPage : ContentPage
 		ContainerLuckNumbers.IsVisible = true;
 		var listNumbers = getRandomListNumbers();
 
-		_ = logoImage.ScaleTo(logoImage.Scale * 1.50, 1500, Easing.BounceIn);
+		_ = logoImage.ScaleTo(logoImage.Scale / 1.25, 1500, Easing.BounceIn);
 
 		LuckNumber01.Text = $"{listNumbers.ElementAt(0):D2}";
         await LuckNumber01.RotateTo(LuckNumber01.Rotation + 360, 500, Easing.BounceOut);
@@ -25,7 +27,7 @@ public partial class MainPage : ContentPage
 		LuckNumber03.Text = $"{listNumbers.ElementAt(2):D2}";
         await LuckNumber03.RotateTo(LuckNumber03.Rotation + 360, 500, Easing.BounceOut);
 
-        _ = logoImage.ScaleTo(logoImage.Scale / 1.50, 1500, Easing.BounceOut);
+        _ = logoImage.ScaleTo(logoImage.Scale * 1.25, 1500, Easing.BounceOut);
         LuckNumber04.Text = $"{listNumbers.ElementAt(3):D2}";
         await LuckNumber04.RotateTo(LuckNumber04.Rotation + 360, 500, Easing.BounceOut);
 
@@ -49,8 +51,39 @@ public partial class MainPage : ContentPage
 		return listNumbers;
 	}
 
+	private void CopyNumbers()
+	{
+		Clipboard.Default.SetTextAsync(getNumbers());
+        CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
+    }
+
+	private async Task ShareNumbers()
+	{
+		await Share.Default.RequestAsync(new ShareTextRequest()
+		{
+			Title = "Número da Sorte",
+			Text = getNumbers(),
+        });
+	}
+
+	private string getNumbers()
+	{
+		return $"{LuckNumber01.Text}-{LuckNumber02.Text}-{LuckNumber03.Text}-{LuckNumber04.Text}-{LuckNumber05.Text}-{LuckNumber06.Text}";
+
+    }
+
     private void Button_Clicked(object sender, EventArgs e)
     {
 		OnGenerateLuckNumbers();
+    }
+
+    private void btCopy_Clicked(object sender, EventArgs e)
+    {
+		CopyNumbers();
+    }
+
+    private async void btShare_Clicked(object sender, EventArgs e)
+    {
+		await ShareNumbers();
     }
 }
