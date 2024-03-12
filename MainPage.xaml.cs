@@ -92,15 +92,15 @@ public partial class MainPage : ContentPage
 
 	private void NotificationPush()
 	{
-        var request = new NotificationRequest
-        {
-            NotificationId = 1337,
-            Title = "Seu Omelete Senhor!",
-            Subtitle = "R$ 23,00",
-            Description = "OMELETE!!",
-            BadgeNumber = 42,
-        };
+		var request = new NotificationRequest
+		{
+			NotificationId = 1337,
+			Title = "Seu Omelete Senhor!",
+			Subtitle = "R$ 23,00",
+			Description = "OMELETE!!",
+			BadgeNumber = 42,
+		};
 
-		request.Show();
-    }
+		LocalNotificationCenter.Current.Show(request);
+	}
 }
