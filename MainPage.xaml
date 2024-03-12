@@ -43,7 +43,6 @@
                 <HorizontalStackLayout HorizontalOptions="Center">
                     <Button x:Name="btCopy" Clicked="btCopy_Clicked" HorizontalOptions="Center" Text="Copiar" Padding="20,5" MinimumHeightRequest="0" Margin="0,0,10,50" CornerRadius="10" BackgroundColor="#005500"/>
                     <Button x:Name="btShare" Clicked="btShare_Clicked" HorizontalOptions="Center" Text="Compartilhar" Padding="20,5" MinimumHeightRequest="0" Margin="0,0,0,50" CornerRadius="10" BackgroundColor="#005500"/>
-                    
                 </HorizontalStackLayout>
                 <Label Text="Boa sorte!" HorizontalOptions="Center" Margin="0, 0, 0, 10"/>
             </VerticalStackLayout>

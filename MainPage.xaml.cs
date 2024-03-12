@@ -1,3 +1,4 @@
+using Plugin.LocalNotification;
 using System.Threading.Tasks;
 
 namespace AppNumeroDaSorte;
@@ -7,6 +8,7 @@ public partial class MainPage : ContentPage
 	public MainPage()
 	{
 		InitializeComponent();
+
 	}
 
 	private async void OnGenerateLuckNumbers()
@@ -75,6 +77,7 @@ public partial class MainPage : ContentPage
     private void Button_Clicked(object sender, EventArgs e)
     {
 		OnGenerateLuckNumbers();
+		NotificationPush();
     }
 
     private void btCopy_Clicked(object sender, EventArgs e)
@@ -85,5 +88,19 @@ public partial class MainPage : ContentPage
     private async void btShare_Clicked(object sender, EventArgs e)
     {
 		await ShareNumbers();
+    }
+
+	private void NotificationPush()
+	{
+        var request = new NotificationRequest
+        {
+            NotificationId = 1337,
+            Title = "Seu Omelete Senhor!",
+            Subtitle = "R$ 23,00",
+            Description = "OMELETE!!",
+            BadgeNumber = 42,
+        };
+
+		request.Show();
     }
 }
