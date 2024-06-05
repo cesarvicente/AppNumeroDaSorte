@@ -1,4 +1,5 @@
 using Plugin.LocalNotification;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
 namespace AppNumeroDaSorte;
@@ -20,30 +21,24 @@ public partial class MainPage : ContentPage
 
 		_ = logoImage.ScaleTo(logoImage.Scale / 1.25, 1500, Easing.BounceIn);
 
-		LuckNumber01.Text = $"{listNumbers.ElementAt(0):D2}";
-        await LuckNumber01.RotateTo(LuckNumber01.Rotation + 360, 500, Easing.BounceOut);
+        await SortAnimate(LuckNumber01, 0);
+        await SortAnimate(LuckNumber02, 1);
+        await SortAnimate(LuckNumber03, 2);
+        await SortAnimate(LuckNumber04, 3);
+        await SortAnimate(LuckNumber05, 4);
+        await SortAnimate(LuckNumber06, 5);
 
-		LuckNumber02.Text = $"{listNumbers.ElementAt(1):D2}";
-        await LuckNumber02.RotateTo(LuckNumber02.Rotation + 360, 500, Easing.BounceOut);
-
-		LuckNumber03.Text = $"{listNumbers.ElementAt(2):D2}";
-        await LuckNumber03.RotateTo(LuckNumber03.Rotation + 360, 500, Easing.BounceOut);
-
-        _ = logoImage.ScaleTo(logoImage.Scale * 1.25, 1500, Easing.BounceOut);
-        LuckNumber04.Text = $"{listNumbers.ElementAt(3):D2}";
-        await LuckNumber04.RotateTo(LuckNumber04.Rotation + 360, 500, Easing.BounceOut);
-
-		LuckNumber05.Text = $"{listNumbers.ElementAt(4):D2}";
-        await LuckNumber05.RotateTo(LuckNumber05.Rotation + 360, 500, Easing.BounceOut);
-
-		LuckNumber06.Text = $"{listNumbers.ElementAt(5):D2}";
-        await LuckNumber06.RotateTo(LuckNumber06.Rotation + 360, 500, Easing.BounceOut);
         btSort.IsEnabled = true;
+
+        async Task SortAnimate (Label label, int order){
+            label.Text = $"{listNumbers.ElementAt(order):D2}";
+            await label.RotateTo(label.Rotation + 360, 500, Easing.BounceOut);
+        }
     }
 
-	private SortedSet<int> getRandomListNumbers()
+	private HashSet<int> getRandomListNumbers()
 	{
-		var listNumbers = new SortedSet<int>();
+		var listNumbers = new HashSet<int>();
 
 		while(listNumbers.Count < 6)
 		{
